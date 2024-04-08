@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Ajouter un Employé</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+</h:head>
+<h:body>
+    <div class="container mt-4">
+        <h:form>
+            <div class="form-group">
+                <h:outputLabel for="name" value="Nom:" class="form-label" />
+                <h:inputText id="name" value="#{employeBean.employee.name}" required="true" requiredMessage="Le nom est requis." class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <h:outputLabel for="email" value="Email:" class="form-label" />
+                <h:inputText id="email" value="#{employeBean.employee.email}" type="email" required="true" requiredMessage="L'email est requis." class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <h:outputLabel for="skills" value="Compétences:" class="form-label" />
+                <h:inputTextarea id="skills" value="#{employeBean.employee.skills}" required="true" requiredMessage="Les compétences sont requises." class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <h:outputLabel for="project" value="Projet:" />
+                <h:selectOneMenu id="project" value="#{affectationBean.selectedProjetId}" class="form-control">
+                    <f:selectItem itemLabel="Sélectionnez un projet" itemValue="" noSelectionOption="true"/>
+                    <f:selectItems value="#{affectationBean.projets}" var="proj"
+                                   itemValue="#{proj.id}" itemLabel="#{proj.name}"/>                </h:selectOneMenu>
+            </div>
+
+            <h:commandButton value="Ajouter" action="#{employeBean.ADDEmployee()}" styleClass="btn btn-success" />
+            <h:commandButton value="Annuler" action="employeeList" immediate="true" styleClass="btn btn-warning ml-2"/>
+
+            <h:messages globalOnly="true" showDetail="true" class="text-danger"/>
+        </h:form>
+    </div>
+</h:body>
+</html>

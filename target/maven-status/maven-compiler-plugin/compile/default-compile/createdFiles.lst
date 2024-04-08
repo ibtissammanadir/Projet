@@ -1,0 +1,8 @@
+com\example\management\daojpa\daoimpl.class
+com\example\management\Model\Employee.class
+com\example\management\Beans\EmployeeBean.class
+com\example\management\Model\Projet.class
+com\example\management\Beans\AffectationBean.class
+com\example\management\Beans\ProjetBean.class
+com\example\management\daojpa\dao.class
+com\example\management\HelloServlet.class

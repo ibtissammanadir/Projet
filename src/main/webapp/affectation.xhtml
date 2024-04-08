@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Affectation Employé au Projet</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+</h:head>
+<h:body>
+    <div class="container mt-4">
+        <h:form>
+            <h2>Affectation Employé au Projet</h2>
+            <h:link outcome="/EmployeList" value="Liste des Employés" class="btn btn-warning mb-3"/>
+            <div class="form-group">
+                <h:outputLabel for="employe" value="Nom de l'employé:" class="form-label" />
+                <h:selectOneMenu id="employe" value="#{affectationBean.selectedEmployeId}" required="true" requiredMessage="L'employé est requis." class="form-control">
+                    <f:selectItem itemLabel="Sélectionnez Employé" itemValue="" noSelectionOption="true"/>
+                    <f:selectItems value="#{affectationBean.employes}" var="emp"
+                                   itemValue="#{emp.id}" itemLabel="#{emp.name}"/>
+                </h:selectOneMenu>
+            </div>
+
+            <div class="form-group">
+                <h:outputLabel for="projet" value="Nom du projet:" class="form-label" />
+                <h:selectOneMenu id="projet" value="#{affectationBean.selectedProjetId}" required="true" requiredMessage="Le projet est requis." class="form-control">
+                    <f:selectItem itemLabel="Sélectionnez Projet" itemValue="" noSelectionOption="true"/>
+                    <f:selectItems value="#{affectationBean.projets}" var="proj"
+                                   itemValue="#{proj.id}" itemLabel="#{proj.name}"/>
+                </h:selectOneMenu>
+            </div>
+
+            <h:commandButton value="Affecter projet" action="#{affectationBean.affecterEmployeAuProjet}" class="btn btn-primary mt-2" />
+
+            <h:messages globalOnly="true" showDetail="true" class="text-danger mt-2" />
+        </h:form>
+    </div>
+</h:body>
+</html>
